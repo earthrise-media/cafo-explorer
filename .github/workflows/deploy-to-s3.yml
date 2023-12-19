@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '18'
       - name: Build
-        working-directory: ./
+        working-directory: cafo-explorer
         run: |
           npm install && npm run build-staging
       - name: Configure AWS
