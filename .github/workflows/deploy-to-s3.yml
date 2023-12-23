@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '18'
       - name: Build
-        working-directory: .
+        working-directory: ./
         run: |
           npm install && npm run build-staging
       - name: Configure AWS
@@ -25,7 +25,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
       - name: Copy to S3
-        working-directory: .
+        working-directory: ./
         run: |
           aws s3 sync dist s3://stories2.theplotline.org/cafo-explorer/ --delete
       - name: Clear Cloudfront cache
