@@ -1,9 +1,11 @@
-import "./style.css";
+import "./css/style.css";
 // import javascriptLogo from '@/javascript.svg'
 import { setupCounter } from "@/counter.js";
 import * as d3 from "d3";
 import scrollama from "scrollama";
 import { figureUpdate } from "@/figure-update.js";
+import 'bootswatch/dist/flatly/bootstrap.min.css';
+
 
 document.querySelector("#app").innerHTML = `
 	<main>
@@ -44,8 +46,8 @@ document.querySelector("#app").innerHTML = `
 				</div>
                 <div class="step" data-step="7">
                     <p>Chickens in the United States are raised in factory farms called concentrated animal feeding operations (CAFOs). We at Earth Genome used our proprietery machine learning tool called Earth Index, to find these CAFOs across the Southern United States. We found hundreds of previously undocumented sites housing thousands of chickens.</p>
-                    <a href="https://felt.com/map/Poultry-CAFOs-Earth-Index-LWP9AUPxOQcWVBgPXYSZolC?loc=33.447,-85.396,6.38z" class="button-link">
-                        <button class="button-1" role="button">Explore the Map</button>
+                    <a href="map/index.html" class="button-link">
+                      <button type="button" class="btn btn-warning">Explore the Map</button>
                     </a>
 				</div>
 			</article>
