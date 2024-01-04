@@ -95,17 +95,18 @@ map.on("load", () => {
     polyCentroid = turf.centroid(e.features[0]).geometry.coordinates;
 
     console.log("🐓");
-
+    console.log("Poly Centroid: ", polyCentroid);
+    console.log("Polygon: ", e.features[0]);
     let bbox = turf.bbox(e.features[0]);
-    console.log(bbox);
+    console.log("Bounding Box: ", bbox);
     const queriedFeatures = map.queryRenderedFeatures(bbox, {
       layers: ["building"],
     });
     moveMiniMap(bbox, polyCentroid);
-    
+
     console.log("qf = ", queriedFeatures);
     // DEBUGGIBG
-    // debugPoly(bbox, e.features[0]);
+    debugPoly(bbox, e.features[0]);
 
     // getStaticMap(polyCentroid[1], polyCentroid[0]);
   });
