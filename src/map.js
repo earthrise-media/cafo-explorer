@@ -60,7 +60,7 @@ map.on("load", () => {
         document.getElementById("static-frame").classList.add("active");
     });
     // when hovering over the layer poly-0102202024-41ymfd console.log (hello)
-    map.on('mouseenter', 'poly-fill3', function(e) {
+    map.on('mouseenter', 'poly-fill', function(e) {
         document.getElementById("static-frame").classList.add("active");
         poly_centroid = turf.centroid(e.features[0]).geometry.coordinates
         console.log("🐓");
@@ -73,18 +73,32 @@ map.on("load", () => {
 
         console.log("qf = ", queriedFeatures)
         // draw bounding box on map
-        // map.addLayer({
-        //     id: `bbox${e.lngLat}`,
-        //     type: "line",
-        //     source: {
-        //         type: "geojson",
-        //         data: turf.bboxPolygon(bbox),
-        //     },
-        //     paint: {
-        //         "line-color": "#ff0000",
-        //         "line-width": 2,
-        //     },
-        // });
+        map.addLayer({
+            id: `bbox${e.lngLat}`,
+            type: "line",
+            source: {
+                type: "geojson",
+                data: turf.bboxPolygon(bbox),
+            },
+            paint: {
+                "line-color": "#ff0000",
+                "line-width": 2,
+            },
+        });
+        // draw centroid on map
+        map.addLayer({
+            id: `centroid${e.lngLat}`,
+            type: "circle",
+            source: {
+                type: "geojson",
+                data: turf.centroid(e.features[0]),
+            },
+            paint: {
+                "circle-radius": 5,
+                "circle-color": "#ff0000",
+                "circle-opacity": 0.8,
+            },
+        });
         
         staticURL = `https://api.mapbox.com/styles/v1/plotline/clqybizqa00f101rj8l32czwr/static/${e.lngLat.lng},${e.lngLat.lat},15,0,0/${staticFrameDimensions[0]}x${staticFrameDimensions[1]}@2x?access_token=${accessToken}&attribution=false&logo=false`
         console.log(staticURL);

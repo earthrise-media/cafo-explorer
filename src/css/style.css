@@ -14,27 +14,27 @@
 }
 @font-face {
   font-family: PPEiko-thin;
-  src: url('./fonts/pp-eiko/PPEiko-Thin.otf');
+  src: url('../fonts/pp-eiko/PPEiko-Thin.otf');
 }
 
 @font-face {
   font-family: PPEiko-medium;
-  src: url('./fonts/pp-eiko/PPEiko-Medium.otf');
+  src: url('../fonts/pp-eiko/PPEiko-Medium.otf');
 }
 
 @font-face {
   font-family: PPEiko-heavy;
-  src: url('./fonts/pp-eiko/PPEiko-Heavy.otf');
+  src: url('../fonts/pp-eiko/PPEiko-Heavy.otf');
 }
 
 @font-face {
   font-family: PPEiko-light-italic;
-  src: url('./fonts/pp-eiko/PPEiko-LightItalic.otf');
+  src: url('../fonts/pp-eiko/PPEiko-LightItalic.otf');
 }
 
 @font-face {
   font-family: PPEiko-black-italic;
-  src: url('./fonts/pp-eiko/PPEiko-BlackItalic.otf');
+  src: url('../fonts/pp-eiko/PPEiko-BlackItalic.otf');
 }
 
 body {
@@ -127,7 +127,7 @@ figure p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: url('./chicken-headshot-transparent80.png');
+  background-image: url('../chicken-headshot-transparent80.png');
   background-position: center;
   background-repeat: no-repeat;
   /* opacity: 0.8; */
