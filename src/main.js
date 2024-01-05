@@ -4,7 +4,7 @@ import { setupCounter } from "@/counter.js";
 import * as d3 from "d3";
 import scrollama from "scrollama";
 import { figureUpdate } from "@/figure-update.js";
-import 'bootswatch/dist/flatly/bootstrap.min.css';
+// import 'bootswatch/dist/flatly/bootstrap.min.css';
 
 
 document.querySelector("#app").innerHTML = `
@@ -45,9 +45,9 @@ document.querySelector("#app").innerHTML = `
 					<h1>SO WHERE DO THEY ALL LIVE?</h1>
 				</div>
                 <div class="step" data-step="7">
-                    <p>Chickens in the United States are raised in factory farms called concentrated animal feeding operations (CAFOs). We at Earth Genome used our proprietery machine learning tool called Earth Index, to find these CAFOs across the Southern United States. We found hundreds of previously undocumented sites housing thousands of chickens.</p>
-                    <a href="map/index.html" class="button-link">
-                      <button type="button" class="btn btn-warning">Explore the Map</button>
+                    <p>Chickens in the United States are raised in factory farms called concentrated animal feeding operations (CAFOs). We at Earth Genome used our proprietery machine learning tool called Earth Index, to find these CAFOs across the Southern United States. We found thousands of previously undocumented sites housing millions of chickens.</p>
+                    <a href="map/" class="button-link">
+                      <button type="button" class="button-1 btn-warning">Explore the Map</button>
                     </a>
 				</div>
 			</article>

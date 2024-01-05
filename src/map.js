@@ -104,24 +104,22 @@ map.on("load", () => {
     });
     moveMiniMap(bbox, polyCentroid);
 
-    console.log("qf = ", queriedFeatures);
-    // DEBUGGIBG
-    debugPoly(bbox, e.features[0]);
+    // console.log("qf = ", queriedFeatures);
+    // DEBUGGING
+    // debugPoly(bbox, e.features[0]);
 
     // getStaticMap(polyCentroid[1], polyCentroid[0]);
   });
 
   map.on("mouseleave", "poly-fill", function () {
-    console.log("hovering");
+    // console.log("hovering");
     document.getElementById("static-frame").classList.remove("active");
   });
   map.on("zoomend", function () {
-    console.log(cafosVisible());
     document.getElementById("cafo-count").innerHTML = `${cafosVisible()}`;
     // document.getElementById("cafo-label").innerHTML = `Identified 🐓 CAFOs Visible`;
   });
   map.on("moveend", function () {
-    console.log(cafosVisible());
     document.getElementById("cafo-count").innerHTML = `${cafosVisible()}`;
     // document.getElementById("cafo-label").innerHTML = `Identified 🐓 CAFOs Visible`;
   });

@@ -168,10 +168,10 @@ figure p {
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
-  color: #000000;
+  color: #000000d0;
   cursor: pointer;
   display: inline-block;
-  font-family: PPEiko-medium, sans-serif;
+  font-family: PPEiko-black-italic, sans-serif;
   font-size: 20px;
   font-weight: 500;
   height: 40px;
@@ -195,7 +195,8 @@ figure p {
   /* background-color: #f5c73bbb; */
   cursor: pointer;
   transform: translateY(-5px); /* Move the button up on hover */
-  box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+
 }
 .button-1:active {
   background-color: #f5c53b;
