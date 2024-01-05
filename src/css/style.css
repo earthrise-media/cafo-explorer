@@ -236,6 +236,7 @@ figure p {
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
+  
 }
 #dynamic-frame {
   position: absolute;
@@ -349,4 +350,43 @@ figure p {
   font-size: 1rem;
   margin: auto;
   /* background-color: #3b3b3b; */
+}
+@media only screen and (max-width: 767px) {
+  #dynamic-frame, #static-frame, #curtain-1, #curtain-2 {
+      display: none;
+  }
+  /* make control panel above the map */
+  #control-panel {
+    position: absolute;
+    padding: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 2.5px;
+    top: 0;
+    left: 0;
+    width: calc(100% - 10px);
+    height: 100px;
+    background-color: #ede6da;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+  }
+  #map {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: calc(100% - 10px);
+    height: calc(100% - 120px);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ede6da;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  }
 }

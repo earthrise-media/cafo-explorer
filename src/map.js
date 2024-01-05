@@ -50,13 +50,13 @@ const minimap = new mapboxgl.Map({
   interactive: false,
 });
 const satmap = new mapboxgl.Map({
-    container: "static-frame",
-    style: "mapbox://styles/plotline/clqx5xsyi00e001rd731u0axx",
-    center: [-85.71, 32.78],
-    zoom: 4.83,
-    attributionControl: false,
-    interactive: false,
-  });
+  container: "static-frame",
+  style: "mapbox://styles/plotline/clqx5xsyi00e001rd731u0axx",
+  center: [-85.71, 32.78],
+  zoom: 4.83,
+  attributionControl: false,
+  interactive: false,
+});
 
 map.addControl(new mapboxgl.NavigationControl());
 map.on("load", () => {
@@ -81,111 +81,120 @@ map.on("load", () => {
 
   // make the element with id static frame have css static frame active when hovering over the map
   // map on click event
-  map.on("click", function (e) {
-    // add active to the static-frame id
-    document.getElementById("static-frame").classList.add("active");
-  });
-  // when hovering over the layer poly-0102202024-41ymfd console.log (hello)
-  map.on("mouseenter", "poly-fill", function (e) {
-    if (document.getElementById("curtain-1")) {
+  //   if page is showing dynamic frame console.log (hello)
+  //   else if page is showing static frame console.log (hello)
+  if (document.getElementById("static-frame").classList.contains("active")) {
+    console.log("static frame is active");
+
+    map.on("click", function (e) {
+      // add active to the static-frame id
+      document.getElementById("static-frame").classList.add("active");
+    });
+    // when hovering over the layer poly-0102202024-41ymfd console.log (hello)
+    map.on("mouseenter", "poly-fill", function (e) {
+      if (document.getElementById("curtain-1")) {
         document.getElementById("curtain-1").remove();
         document.getElementById("curtain-2").remove();
+      }
+      document.getElementById("static-frame").classList.add("active");
+      polyCentroid = turf.centroid(e.features[0]).geometry.coordinates;
+
+      console.log("🐓");
+      console.log("Poly Centroid: ", polyCentroid);
+      console.log("Polygon: ", e.features[0]);
+      let bbox = turf.bbox(e.features[0]);
+      console.log("Bounding Box: ", bbox);
+      const queriedFeatures = map.queryRenderedFeatures(bbox, {
+        layers: ["building"],
+      });
+      moveMiniMap(bbox, polyCentroid);
+
+      // console.log("qf = ", queriedFeatures);
+      // DEBUGGING
+      // debugPoly(bbox, e.features[0]);
+
+      // getStaticMap(polyCentroid[1], polyCentroid[0]);
+    });
+
+    map.on("mouseleave", "poly-fill", function () {
+      // console.log("hovering");
+      document.getElementById("static-frame").classList.remove("active");
+    });
+}
+    map.on("zoomend", function () {
+      document.getElementById("cafo-count").innerHTML = `${cafosVisible()}`;
+      // document.getElementById("cafo-label").innerHTML = `Identified 🐓 CAFOs Visible`;
+    });
+    map.on("moveend", function () {
+      document.getElementById("cafo-count").innerHTML = `${cafosVisible()}`;
+      // document.getElementById("cafo-label").innerHTML = `Identified 🐓 CAFOs Visible`;
+    });
+
+    function cafosVisible() {
+      let pointsVisible = map.queryRenderedFeatures({
+        layers: ["points-1"],
+      });
+      let polysVisible = map.queryRenderedFeatures({
+        layers: ["poly-outline"],
+      });
+      return Math.max(pointsVisible.length, polysVisible.length);
     }
-    document.getElementById("static-frame").classList.add("active");
-    polyCentroid = turf.centroid(e.features[0]).geometry.coordinates;
-
-    console.log("🐓");
-    console.log("Poly Centroid: ", polyCentroid);
-    console.log("Polygon: ", e.features[0]);
-    let bbox = turf.bbox(e.features[0]);
-    console.log("Bounding Box: ", bbox);
-    const queriedFeatures = map.queryRenderedFeatures(bbox, {
-      layers: ["building"],
-    });
-    moveMiniMap(bbox, polyCentroid);
-
-    // console.log("qf = ", queriedFeatures);
-    // DEBUGGING
-    // debugPoly(bbox, e.features[0]);
-
-    // getStaticMap(polyCentroid[1], polyCentroid[0]);
-  });
-
-  map.on("mouseleave", "poly-fill", function () {
-    // console.log("hovering");
-    document.getElementById("static-frame").classList.remove("active");
-  });
-  map.on("zoomend", function () {
-    document.getElementById("cafo-count").innerHTML = `${cafosVisible()}`;
-    // document.getElementById("cafo-label").innerHTML = `Identified 🐓 CAFOs Visible`;
-  });
-  map.on("moveend", function () {
-    document.getElementById("cafo-count").innerHTML = `${cafosVisible()}`;
-    // document.getElementById("cafo-label").innerHTML = `Identified 🐓 CAFOs Visible`;
-  });
-
-  function cafosVisible() {
-    let pointsVisible = map.queryRenderedFeatures({
-      layers: ["points-1"],
-    });
-    let polysVisible = map.queryRenderedFeatures({
-      layers: ["poly-outline"],
-    });
-    return Math.max(pointsVisible.length, polysVisible.length);
-  }
-  function getStaticMap(lat, lon) {
-    staticURL = `https://api.mapbox.com/styles/v1/plotline/clqybizqa00f101rj8l32czwr/static/${lon},${lat},15,0,0/${staticFrameDimensions[0]}x${staticFrameDimensions[1]}@2x?access_token=${accessToken}&attribution=false&logo=false`;
-    console.log(staticURL);
-    // add a background image to the static frame
-    document.getElementById("static-frame").style.backgroundImage = `url(${staticURL})`;
-  }
-  function debugPoly(bbox, point) {
-    map.addLayer({
-      id: `bbox${bbox}`,
-      type: "line",
-      source: {
-        type: "geojson",
-        data: turf.bboxPolygon(bbox),
-      },
-      paint: {
-        "line-color": "#ff0000",
-        "line-width": 2,
-      },
-    });
-    map.addLayer({
-      id: `centroid${bbox}`,
-      type: "circle",
-      source: {
-        type: "geojson",
-        data: turf.centroid(point),
-      },
-      paint: {
-        "circle-radius": 5,
-        "circle-color": "#ff0000",
-        "circle-opacity": 0.8,
-      },
-    });
-  }
-  function moveMiniMap(box, polyCentroid) {
-    // add satellite map boundary movements here
-    satmap.fitBounds([
-        [box[0], box[1]], // southwestern corner of the bounds
-        [box[2], box[3]] // northeastern corner of the bounds
-    ], {linear: true, pitch: 0});
-    minimap.jumpTo({
-      center: [polyCentroid[0], polyCentroid[1]],
-      zoom: 17,
-      pitch: 75,
-      bearing: 0,
-    });
-    rotateCamera(0);
-  }
-  function rotateCamera(timestamp) {
-    // clamp the rotation between 0 -360 degrees
-    // Divide timestamp by 100 to slow rotation to ~10 degrees / sec
-    minimap.rotateTo((timestamp / 100) % 360, { duration: 0 });
-    // Request the next frame of the animation.
-    requestAnimationFrame(rotateCamera);
+    function getStaticMap(lat, lon) {
+      staticURL = `https://api.mapbox.com/styles/v1/plotline/clqybizqa00f101rj8l32czwr/static/${lon},${lat},15,0,0/${staticFrameDimensions[0]}x${staticFrameDimensions[1]}@2x?access_token=${accessToken}&attribution=false&logo=false`;
+      console.log(staticURL);
+      // add a background image to the static frame
+      document.getElementById("static-frame").style.backgroundImage = `url(${staticURL})`;
+    }
+    function debugPoly(bbox, point) {
+      map.addLayer({
+        id: `bbox${bbox}`,
+        type: "line",
+        source: {
+          type: "geojson",
+          data: turf.bboxPolygon(bbox),
+        },
+        paint: {
+          "line-color": "#ff0000",
+          "line-width": 2,
+        },
+      });
+      map.addLayer({
+        id: `centroid${bbox}`,
+        type: "circle",
+        source: {
+          type: "geojson",
+          data: turf.centroid(point),
+        },
+        paint: {
+          "circle-radius": 5,
+          "circle-color": "#ff0000",
+          "circle-opacity": 0.8,
+        },
+      });
+    function moveMiniMap(box, polyCentroid) {
+      // add satellite map boundary movements here
+      satmap.fitBounds(
+        [
+          [box[0], box[1]], // southwestern corner of the bounds
+          [box[2], box[3]], // northeastern corner of the bounds
+        ],
+        { linear: true, pitch: 0 }
+      );
+      minimap.jumpTo({
+        center: [polyCentroid[0], polyCentroid[1]],
+        zoom: 17,
+        pitch: 75,
+        bearing: 0,
+      });
+      rotateCamera(0);
+    }
+    function rotateCamera(timestamp) {
+      // clamp the rotation between 0 -360 degrees
+      // Divide timestamp by 100 to slow rotation to ~10 degrees / sec
+      minimap.rotateTo((timestamp / 100) % 360, { duration: 0 });
+      // Request the next frame of the animation.
+      requestAnimationFrame(rotateCamera);
+    }
   }
 
   //   map.addSource("cafos", {
