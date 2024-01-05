@@ -6,7 +6,6 @@ import scrollama from "scrollama";
 import { figureUpdate } from "@/figure-update.js";
 // import 'bootswatch/dist/flatly/bootstrap.min.css';
 
-
 document.querySelector("#app").innerHTML = `
 	<main>
 		<section id="intro">
@@ -69,67 +68,49 @@ var scroller = scrollama();
 
 // generic window resize listener event
 function handleResize() {
-  // 1. update height of step elements
-  var stepH = Math.floor(window.innerHeight * 1);
-  step.style("height", stepH + "px");
+    // 1. update height of step elements
+    var stepH = Math.floor(window.innerHeight * 1);
+    step.style("height", stepH + "px");
 
-  var figureHeight = window.innerHeight / 1;
-  var figureMarginTop = (window.innerHeight - figureHeight) / 5;
+    var figureHeight = window.innerHeight / 1;
+    var figureMarginTop = (window.innerHeight - figureHeight) / 5;
 
-  figure.style("height", figureHeight + "px").style("top", figureMarginTop + "px");
+    figure.style("height", figureHeight + "px").style("top", figureMarginTop + "px");
 
-  // 3. tell scrollama to update new element dimensions
-  scroller.resize();
+    // 3. tell scrollama to update new element dimensions
+    scroller.resize();
 }
 
 // scrollama event handlers
 function handleStepEnter(response) {
-  console.log(response);
-  // response = { element, direction, index }
+    console.log(response);
+    // response = { element, direction, index }
 
-  // add color to current step only
-  step.classed("is-active", function (d, i) {
-    return i === response.index;
-  });
-  figureUpdate(response.index);
+    // add color to current step only
+    step.classed("is-active", function (d, i) {
+        return i === response.index;
+    });
+    figureUpdate(response.index);
 
-  // update graphic based on step
-  //   figure.select("p").text(response.index + 1);
-  //   run a function here that will update the figure based on the index
+    // update graphic based on step
+    //   figure.select("p").text(response.index + 1);
+    //   run a function here that will update the figure based on the index
 }
 
 function init() {
-  // 1. force a resize on load to ensure proper dimensions are sent to scrollama
-  handleResize();
+    // 1. force a resize on load to ensure proper dimensions are sent to scrollama
+    handleResize();
 
-  // 2. setup the scroller passing options
-  // 		this will also initialize trigger observations
-  // 3. bind scrollama event handlers (this can be chained like below)
-  scroller
-    .setup({
-      step: "#scrolly article .step",
-      offset: 0.9,
-      debug: false,
-    })
-    .onStepEnter(handleStepEnter);
+    // 2. setup the scroller passing options
+    // 		this will also initialize trigger observations
+    // 3. bind scrollama event handlers (this can be chained like below)
+    scroller
+        .setup({
+            step: "#scrolly article .step",
+            offset: 0.9,
+            debug: false,
+        })
+        .onStepEnter(handleStepEnter);
 }
 
-// kick things off
 init();
-
-// let emojiString = "🐓".repeat(1000);
-
-// var emoji = d3
-//   .select("#app")
-//   .append("span")
-//   .attr("class", "emoji")
-//   .text(emojiString) // your emoji here
-//   .style("position", "absolute");
-
-// function animateEmoji() {
-//   emoji.style("left", "100%").transition().duration(3000).style("left", "0%");
-//   //  .on("end", animateEmoji);
-// }
-
-// animateEmoji();
-// setupCounter(document.querySelector('#counter'))
