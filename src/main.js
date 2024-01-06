@@ -11,7 +11,7 @@ document.querySelector("#app").innerHTML = `
 		<section id="intro">
             <div class="background-image"></div>
 			<p class="intro__dek">
-                There are millions of undocumented chickens in the United States...
+                There are millions of chickens in the United States, but where are they...
 			</p>
             <br></br>
             <p class="intro__dek">
