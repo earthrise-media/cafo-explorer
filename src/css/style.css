@@ -130,6 +130,7 @@ figure p {
     background-image: url("../chicken-headshot-transparent80.png");
     background-position: center;
     background-repeat: no-repeat;
+    align-items: center;
     /* opacity: 0.8; */
 }
 #intro h1 {
@@ -348,6 +349,31 @@ figure p {
     margin: auto;
     /* background-color: #3b3b3b; */
 }
+#scroll-button {
+    border: none;
+    background-color: transparent;
+    padding: 1.5rem;
+    cursor: pointer;
+    align-items: center;
+    position: absolute;
+    bottom: 0px;
+}
+
+#scroll-button:hover {
+    svg {
+        transition: transform 0.5s ease-in-out;
+        transform: translateY(-10px);
+    }
+}
+#scroll-text {
+    font-family: PPEiko-black-italic;
+    font-size: 1rem;
+    color: #f5c53b;
+    align-items: center;
+    position: absolute;
+    bottom: 0px;
+}
+
 @media only screen and (max-width: 767px) {
     #dynamic-frame,
     #static-frame,
