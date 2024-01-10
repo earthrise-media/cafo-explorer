@@ -135,7 +135,7 @@ figure p {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: url("chicken-headshot-transparent80.png");
+    background-image: url("../chicken-headshot-transparent80.png");
     background-position: center;
     background-repeat: no-repeat;
     align-items: center;
