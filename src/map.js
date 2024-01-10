@@ -6,7 +6,7 @@ import * as turf from "@turf/turf";
 let polyCentroid = null;
 let staticURL = null;
 let bbox = null;
-var accessToken = "pk.eyJ1IjoicGxvdGxpbmUiLCJhIjoiY2xmOGo1NW4wMGVtNzNya2UyNnllZGcyciJ9.gUFn8Mj5HQbagkpQWaDqaw";
+var accessToken = "pk.eyJ1IjoicGxvdGxpbmUiLCJhIjoiY2xyN2o0dGV5MGFpOTJscW93b3psdjlpMCJ9.c1eshEreIPXuuUGK_ZPJNQ";
 document.querySelector("#app").innerHTML = `
 	<main>
         <div class="card control-panel" id="control-panel">
@@ -72,13 +72,12 @@ const satmap = new mapboxgl.Map({
     attributionControl: false,
     interactive: false,
 });
-
-// map.addControl(new mapboxgl.NavigationControl());
 map.on("load", () => {
     document.getElementById("cafo-count").innerHTML = `${countVisible()[0]} 🏠`;
     document.getElementById("cafo-label").innerHTML = `CAFO Complexes Visible`;
     document.getElementById("chicken-count").innerHTML = `~${countVisible()[1]} 🐓`;
     document.getElementById("chicken-label").innerHTML = `Chickens Visible`;
+    map.addControl(new mapboxgl.NavigationControl());
     // style the map for the building-extrusion layer to have a hover state that turns the buildings red
     minimap.setPaintProperty("building-extrusion", "fill-extrusion-color", ["case", ["boolean", ["feature-state", "hover"], false], "#ffa201", "#9e8861"]);
 

@@ -36,7 +36,6 @@
     font-family: PPEiko-black-italic;
     src: url("../fonts/pp-eiko/PPEiko-BlackItalic.otf");
 }
-
 body {
     margin: 0;
     padding: 0;
@@ -44,15 +43,15 @@ body {
 
 #scrolly {
     position: relative;
-    background-color: #ffffff;
-    padding: 1rem;
+    background-color: #e0dcd6;
+    /* padding: 1rem; */
 }
 
 article {
     position: relative;
     padding: 0;
     max-width: 100%;
-    margin: 0 auto;
+    margin: 0 0;
 }
 
 figure {
@@ -64,8 +63,13 @@ figure {
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-    background-color: #ffffff;
+    background-color: #e0dcd6;
     z-index: 0;
+    background-image: url("");
+    background-size:contain; /* Image will be displayed at its original size */
+    background-repeat: no-repeat; 
+    background-position: center center;
+    justify-content: center;
 }
 
 figure p {
@@ -101,28 +105,32 @@ figure p {
 }
 
 .step p {
+    font-family: pp-eiko-medium;
     text-align: center;
     padding: 1rem;
     font-size: 1.5rem;
-    background-color: #ffffff;
+    background-color: #00000069;
     max-width: 1000px;
     margin: 0 auto;
+    color: #ffffff;
 }
 .step h1 {
     text-align: center;
     font-family: PPEiko-medium;
     padding: 0rem;
     font-size: 3rem;
-    /* background-color: #3b3b3b; */
+    max-width: 800px;
+    justify-content: center;
+    /* make this text show up in the middle horizontally*/
+    margin: 0 auto;
 }
 #intro {
-    /* make this the full page height */
     height: 100vh;
     /* flex: 1; */
     background-color: #040406;
     color: #f5c53b;
     padding: 1rem;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
     /* center contents vertically */
     display: flex;
     flex-direction: column;
@@ -134,19 +142,19 @@ figure p {
     /* opacity: 0.8; */
 }
 #intro h1 {
-    font-size: 5rem;
+    font-size: 6rem;
     font-family: PPEiko-heavy;
     text-align: center;
     padding: 0rem;
     margin: 0rem;
 }
 #intro p {
-    font-size: 2.5rem;
+    font-size: 4rem;
     font-family: PPEiko-medium;
     text-align: center;
     padding: 0rem;
     margin: 0rem;
-    max-width: 800px;
+    /* max-width: 800px; */
     margin: 0 auto;
 }
 .emoji {
@@ -178,7 +186,7 @@ figure p {
     height: 40px;
     line-height: 20px;
     list-style: none;
-    margin: em auto;
+    margin: 20px;
     outline: none;
     padding: 10px 16px;
     position: relative;
@@ -189,6 +197,45 @@ figure p {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+}
+.button-2 {
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    background-color: #f5c53b;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    border: 3px solid #000000a9;
+    color: #000000d0;
+    cursor: pointer;
+    font-family: PPEiko-black-italic, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 10px; /* Set line-height equal to the height of the button */
+    list-style: none;
+    margin: 20px;
+    outline: none;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-2:hover,
+.button-2:focus {
+    /* background-color: #f5c73bbb; */
+    cursor: pointer;
+    transform: translateY(-5px); /* Move the button up on hover */
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+.button-2:active {
+    background-color: #f5c53b;
+    box-shadow: none;
 }
 
 .button-1:hover,
@@ -225,7 +272,6 @@ figure p {
     overflow-x: hidden;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-
 }
 .control-panel {
     position: absolute;
@@ -236,16 +282,16 @@ figure p {
     top: 0;
     left: 0;
     width: 390px;
-    height: 105px;
+    height: 107px;
     /* padding-left: 10px; */
 }
-.counts{
+.counts {
     display: flex;
     flex-direction: column; /* Stacks count and label vertically */
     align-items: center; /* Centers them horizontally */
     flex: 1;
 }
-.counts-wrapper{
+.counts-wrapper {
     justify-content: space-around;
     display: flex;
     margin: 0;
@@ -278,7 +324,7 @@ figure p {
     font-size: 0.8rem;
     margin-left: 10px;
 }
-.legend-wrapper{
+.legend-wrapper {
     /* make everything in this side by side */
     display: flex;
     flex-direction: row;
@@ -286,7 +332,7 @@ figure p {
     padding: 0;
     /* justify-content: space-between; */
 }
-.legend{
+.legend {
     margin-top: 4px;
 }
 
@@ -297,10 +343,10 @@ figure p {
     margin-right: 5px;
     margin-top: 2.5px;
     margin-bottom: 2.5px;
-    top: 112.5px;
+    top: 114.5px;
     left: 0;
     width: 390px;
-    height: calc((100% - 125px) / 2);
+    height: calc((100% - 127px) / 2);
     background-color: #ede6da;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -319,7 +365,7 @@ figure p {
     bottom: 0;
     left: 0;
     width: 390px;
-    height: calc((100% - 125px) / 2);
+    height: calc((100% - 127px) / 2);
     background-color: #ede6da;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -335,10 +381,10 @@ figure p {
     margin-right: 5px;
     margin-top: 2.5px;
     margin-bottom: 2.5px;
-    top: 112.5px;
+    top: 114.5px;
     left: 0;
     width: 390px;
-    height: calc((100% - 125px) / 2);
+    height: calc((100% - 127px) / 2);
     background-color: #ede6da;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -360,7 +406,7 @@ figure p {
     bottom: 0;
     left: 0;
     width: 390px;
-    height: calc((100% - 125px) / 2);
+    height: calc((100% - 127px) / 2);
     background-color: #ede6da;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -460,4 +506,10 @@ figure p {
         /* -webkit-text-stroke: 2px #5b4b1d; */
         /* background-color: #3b3b3b; */
     }
+}
+
+#emojiCanvas {
+    width: 100%;
+    height: 100%;
+    /* additional styles */
 }

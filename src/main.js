@@ -1,66 +1,67 @@
 import "./css/style.css";
-// import javascriptLogo from '@/javascript.svg'
-import { setupCounter } from "@/counter.js";
 import * as d3 from "d3";
 import scrollama from "scrollama";
-import { figureUpdate } from "@/figure-update.js";
-// import 'bootswatch/dist/flatly/bootstrap.min.css';
 
 document.querySelector("#app").innerHTML = `
-	<main>
-		<section id="intro">
+    <main>
+        <a href="map/" class="button-link">
+            <button class="button-2" id="button-2" type="button">Jump to Map</button>
+        </a>
+        <section id="intro">
             <div class="background-image"></div>
-			<p class="intro__dek">
-                There are millions of chickens in the United States, but where are they...
-			</p>
+            <p class="intro">
+                There are millions of chickens in the United States...
+            </p>
             <br></br>
-            <p class="intro__dek">
+            <p class="intro">
                 We just found them.
-			</p>
+            </p>
             <br></br>
             <button id="scroll-button" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="52" viewBox="0 0 128 52" fill="none">
-                    <path d="M33.7945 14.7931L64 37.2069L94.2055 14.7931M25.1644 51H102.836C116.181 51 127 40.1931 127 26.8621V25.1379C127 11.8069 116.181 1 102.836 1H25.1644C11.8188 1 1 11.8069 1 25.1379V26.8621C1 40.1931 11.8188 51 25.1644 51Z" stroke="#F5C53B" stroke-width="2"/>
+                    <path
+                        d="M33.7945 14.7931L64 37.2069L94.2055 14.7931M25.1644 51H102.836C116.181 51 127 40.1931 127 26.8621V25.1379C127 11.8069 116.181 1 102.836 1H25.1644C11.8188 1 1 11.8069 1 25.1379V26.8621C1 40.1931 11.8188 51 25.1644 51Z"
+                        stroke="#F5C53B" stroke-width="2" />
                 </svg>
             </button>
             <div id="scroll-text">SCROLL DOWN</div>
-		</section>
+        </section>
 
-		<section id="scrolly">
-			<figure>
-			</figure>
+        <section id="scrolly">
+            <figure>
+            </figure>
 
-			<article>
-				<div class="step" data-step="1">
-					<h1 id="1-chicken">THIS IS A CHICKEN</h1>
-				</div>
-				<div class="step" data-step="2">
-					<h1>THIS IS 1,000 CHICKENS</h1>
-				</div>
-				<div class="step" data-step="3">
-					<h1>THIS IS 10,000 CHICKENS</h1>
-				</div>
-				<div class="step" data-step="4">
-					<h1>THIS 🟨 IS 100,000 CHICKENS</h1>
-				</div>
+            <article>
+                <div class="step" data-step="1">
+                    <h1 id="1-chicken">THIS IS A CHICKEN</h1>
+                </div>
+                <div class="step" data-step="2">
+                    <h1>THIS IS 1,000 CHICKENS</h1>
+                </div>
+                <div class="step" data-step="3">
+                    <h1>THIS IS 10,000 CHICKENS</h1>
+                </div>
+                <div class="step" data-step="4">
+                    <h1>THIS 🟨 IS 100,000 CHICKENS</h1>
+                </div>
                 <div class="step" data-step="5">
-					<h1>There are 10 Billion Chickens raised in the United States every year</h1>
-				</div>
+                    <h1>THERE ARE 10 BILLION CHICKENS RAISED IN THE UNITED STATES EVERY YEAR</h1>
+                </div>
                 <div class="step" data-step="6">
-					<h1>SO WHERE DO THEY ALL LIVE?</h1>
-				</div>
+                    <h1>SO WHERE DO THEY ALL LIVE?</h1>
+                </div>
                 <div class="step" data-step="7">
-                    <p>Chickens in the United States are raised in factory farms called concentrated animal feeding operations (CAFOs). We at Earth Genome used our proprietery machine learning tool called Earth Index, to find these CAFOs across the Southern United States. We found thousands of previously undocumented sites housing millions of chickens.</p>
+                    <p>Chickens in the United States are raised in factory farms called concentrated animal feeding
+                        operations (CAFOs). We at Earth Genome used our proprietery machine learning tool called Earth
+                        Index, to find these CAFOs across the Southern United States. We found thousands of previously
+                        undocumented sites housing millions of chickens.</p>
                     <a href="map/" class="button-link">
-                      <button type="button" class="button-1 btn-warning">Explore the Map</button>
+                        <button type="button" class="button-1">Explore the Map</button>
                     </a>
-				</div>
-			</article>
-		</section>
-
-		<section id="outro"></section>
+                </div>
+            </article>
+        </section>
     </main>
-
 `;
 
 var main = d3.select("main");
@@ -77,7 +78,7 @@ scrollButton.addEventListener("click", function () {
         top: window.innerHeight,
         behavior: "smooth",
     });
-}); 
+});
 
 // generic window resize listener event
 function handleResize() {
@@ -85,8 +86,8 @@ function handleResize() {
     var stepH = Math.floor(window.innerHeight * 1);
     step.style("height", stepH + "px");
 
-    var figureHeight = window.innerHeight / 4;
-    var figureMarginTop = (window.innerHeight - figureHeight) / 2;
+    var figureHeight = window.innerHeight;
+    var figureMarginTop = (window.innerHeight - figureHeight) / 1;
 
     figure.style("height", figureHeight + "px").style("top", figureMarginTop + "px");
 
@@ -117,13 +118,81 @@ function init() {
     // 2. setup the scroller passing options
     // 		this will also initialize trigger observations
     // 3. bind scrollama event handlers (this can be chained like below)
+    // eventually I should set progress to true and connect this value to the background images coming in and out.
     scroller
         .setup({
             step: "#scrolly article .step",
             offset: 0.9,
-            debug: false,
+            // debug: true,
+            // progress: true,
         })
         .onStepEnter(handleStepEnter);
+}
+
+function figureUpdate(stepNumber) {
+    console.log(stepNumber);
+    d3.select("figure").selectAll("*").remove();
+
+    if (stepNumber === 0) {
+        changeBackgroundImage("chicken-1.png", true);
+    }
+    if (stepNumber === 1) {
+        changeBackgroundImage("chicken-1000.png", true);
+    }
+    if (stepNumber === 2) {
+        changeBackgroundImage("chicken-10000.png", true);
+    }
+    if (stepNumber === 3) {
+        changeBackgroundImage("chicken-100000.png", true);
+    }
+
+    if (stepNumber === 4) {
+        changeBackgroundImage("squares-100000.png", true);
+    }
+    if (stepNumber === 5) {
+        document.querySelector("figure").style.backgroundRepeat = "no-repeat";
+        document.querySelector("figure").style.backgroundImage = "url(squares-100000.png)";
+        let emojiString = "🏠";
+        var emoji = d3
+            .select("figure")
+            .append("span")
+            .attr("class", "emoji")
+            .text(emojiString) // your emoji here
+            .style("position", "absolute");
+        emoji
+            .style("opacity", 0) // Start with the emoji being invisible
+            .transition() // Start the transition
+            .duration(3000) // Set the duration to 3000 milliseconds
+            .style("opacity", 1) // Fade in to fully opaque
+            .style("font-size", "8rem")
+            .style("left", "46%");
+    }
+    if (stepNumber === 6) {
+        document.querySelector("figure").style.backgroundImage = "url(tiled-cafos.png)";
+        document.querySelector("figure").style.backgroundRepeat = "tile";
+    }
+}
+
+// eventually I should set progress to true and connect this value to the background images coming in and out.
+function changeBackgroundImage(newImageUrl) {
+    var figure = document.querySelector("figure");
+
+    // Step 1: Slide out the current image to the right
+    figure.style.transition = "transform 1s ease-in-out";
+    figure.style.transform = "translate3d(100%, 0, 0)"; // Slide to the right
+
+    // Step 2: After the slide-out transition, change the background and position it to the left
+    setTimeout(function () {
+        figure.style.backgroundImage = "url(" + newImageUrl + ")";
+        figure.style.transition = "none";
+        figure.style.transform = "translate3d(-100%, 0, 0)";
+
+        // Step 3: Slide the new image into view from the left
+        setTimeout(function () {
+            figure.style.transition = "transform 1s ease-in-out";
+            figure.style.transform = "translate3d(0, 0, 0)"; // Slide into view from the left
+        }, 50);
+    }, 1000);
 }
 
 init();
