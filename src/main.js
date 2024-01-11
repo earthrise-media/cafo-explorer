@@ -134,24 +134,49 @@ function figureUpdate(stepNumber) {
     d3.select("figure").selectAll("*").remove();
 
     if (stepNumber === 0) {
-        changeBackgroundImage("chicken-1.png", true);
+        // if the width is 767px or less, then we want to change the background image to the mobile version
+        if (window.innerWidth <= 767) {
+            changeBackgroundImage("chicken-1-mobile.png", true);
+        } else {
+            changeBackgroundImage("chicken-1.png", true);
+        }
     }
     if (stepNumber === 1) {
-        changeBackgroundImage("chicken-1000.png", true);
+        if (window.innerWidth <= 767) {
+            changeBackgroundImage("chicken-1000-mobile.png", true);
+        } else {
+            changeBackgroundImage("chicken-1000.png", true);
+        }
     }
     if (stepNumber === 2) {
-        changeBackgroundImage("chicken-10000.png", true);
+        if (window.innerWidth <= 767) {
+            changeBackgroundImage("chicken-10000-mobile.png", true);
+        } else {
+            changeBackgroundImage("chicken-10000.png", true);
+        }
     }
     if (stepNumber === 3) {
-        changeBackgroundImage("chicken-100000.png", true);
+        if (window.innerWidth <= 767) {
+            changeBackgroundImage("chicken-100000-mobile.png", true);
+        } else {
+            changeBackgroundImage("chicken-100000.png", true);
+        }
     }
 
     if (stepNumber === 4) {
-        changeBackgroundImage("squares-100000.png", true);
+        if (window.innerWidth <= 767) {
+            changeBackgroundImage("squares-100000-mobile.png", true);
+        } else {
+            changeBackgroundImage("squares-100000.png", true);
+        }
     }
     if (stepNumber === 5) {
         document.querySelector("figure").style.backgroundRepeat = "no-repeat";
-        document.querySelector("figure").style.backgroundImage = "url(squares-100000.png)";
+        if (window.innerWidth <= 767) {
+            document.querySelector("figure").style.backgroundImage = "url(squares-100000-mobile.png)";
+        } else {
+            document.querySelector("figure").style.backgroundImage = "url(squares-100000.png)";
+        }
         let emojiString = "🏠";
         var emoji = d3
             .select("figure")
@@ -159,13 +184,17 @@ function figureUpdate(stepNumber) {
             .attr("class", "emoji")
             .text(emojiString) // your emoji here
             .style("position", "absolute");
+
         emoji
             .style("opacity", 0) // Start with the emoji being invisible
             .transition() // Start the transition
             .duration(3000) // Set the duration to 3000 milliseconds
             .style("opacity", 1) // Fade in to fully opaque
-            .style("font-size", "8rem")
-            .style("left", "46%");
+            .style("font-size", "100px") // Grow the font size
+            .style("position", "absolute")
+            .style("text-align", "center")
+            .style("left", "45%");
+        // .style("transform", "translateX(-50%)")
     }
     if (stepNumber === 6) {
         document.querySelector("figure").style.backgroundImage = "url(tiled-cafos.png)";
