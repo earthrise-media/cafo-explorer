@@ -174,31 +174,52 @@ function figureUpdate(stepNumber) {
         document.querySelector("figure").style.backgroundRepeat = "no-repeat";
         if (window.innerWidth <= 767) {
             document.querySelector("figure").style.backgroundImage = "url(squares-100000-mobile.png)";
+            let emojiString = "🏠";
+            var emoji = d3
+                .select("figure")
+                .append("span")
+                .attr("class", "emoji")
+                .text(emojiString) // your emoji here
+                .style("position", "absolute");
+
+            emoji
+                .style("opacity", 0) // Start with the emoji being invisible
+                .transition() // Start the transition
+                .duration(3000) // Set the duration to 3000 milliseconds
+                .style("opacity", 1) // Fade in to fully opaque
+                .style("font-size", "100px") // Grow the font size
+                .style("position", "absolute")
+                .style("text-align", "center")
+                .style("left", "37%");
         } else {
             document.querySelector("figure").style.backgroundImage = "url(squares-100000.png)";
-        }
-        let emojiString = "🏠";
-        var emoji = d3
-            .select("figure")
-            .append("span")
-            .attr("class", "emoji")
-            .text(emojiString) // your emoji here
-            .style("position", "absolute");
+            let emojiString = "🏠";
+            var emoji = d3
+                .select("figure")
+                .append("span")
+                .attr("class", "emoji")
+                .text(emojiString) // your emoji here
+                .style("position", "absolute");
 
-        emoji
-            .style("opacity", 0) // Start with the emoji being invisible
-            .transition() // Start the transition
-            .duration(3000) // Set the duration to 3000 milliseconds
-            .style("opacity", 1) // Fade in to fully opaque
-            .style("font-size", "100px") // Grow the font size
-            .style("position", "absolute")
-            .style("text-align", "center")
-            .style("left", "45%");
-        // .style("transform", "translateX(-50%)")
+            emoji
+                .style("opacity", 0) // Start with the emoji being invisible
+                .transition() // Start the transition
+                .duration(3000) // Set the duration to 3000 milliseconds
+                .style("opacity", 1) // Fade in to fully opaque
+                .style("font-size", "100px") // Grow the font size
+                .style("position", "absolute")
+                .style("text-align", "center")
+                .style("left", "45%");
+        }
     }
     if (stepNumber === 6) {
-        document.querySelector("figure").style.backgroundImage = "url(tiled-cafos.png)";
-        document.querySelector("figure").style.backgroundRepeat = "tile";
+        if (window.innerWidth <= 767) {
+            document.querySelector("figure").style.backgroundImage = "url(tiled-cafos-mobile.png)";
+            document.querySelector("figure").style.backgroundRepeat = "tile";
+        } else {
+            document.querySelector("figure").style.backgroundImage = "url(tiled-cafos.png)";
+            document.querySelector("figure").style.backgroundRepeat = "tile";
+        }
     }
 }
 
