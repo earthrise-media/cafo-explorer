@@ -127,6 +127,7 @@ function init() {
             // progress: true,
         })
         .onStepEnter(handleStepEnter);
+    window.addEventListener("resize", handleResize);
 }
 
 function figureUpdate(stepNumber) {

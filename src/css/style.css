@@ -454,6 +454,12 @@ figure p {
     bottom: 0px;
 }
 
+#emojiCanvas {
+    width: 100%;
+    height: 100%;
+    /* additional styles */
+}
+
 @media only screen and (max-width: 767px) {
     #dynamic-frame,
     #static-frame,
@@ -747,10 +753,4 @@ figure p {
         padding: 0rem;
         margin: 0rem;
     }
-}
-
-#emojiCanvas {
-    width: 100%;
-    height: 100%;
-    /* additional styles */
 }
