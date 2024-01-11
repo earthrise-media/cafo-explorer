@@ -542,7 +542,7 @@ figure p {
         background-color: #e0dcd6;
         z-index: 0;
         background-image: url("");
-        background-size:contain; /* Image will be displayed at its original size */
+        background-size:cover; 
         background-repeat: no-repeat; 
         background-position: center center;
         justify-content: center;
