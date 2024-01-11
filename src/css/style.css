@@ -118,7 +118,7 @@ figure p {
     text-align: center;
     font-family: PPEiko-medium;
     padding: 0rem;
-    font-size: 3rem;
+    font-size: 2.4rem;
     max-width: 800px;
     justify-content: center;
     /* make this text show up in the middle horizontally*/
@@ -250,7 +250,6 @@ figure p {
     box-shadow: none;
 }
 
-/* create a map container with curved corners that covers the entire page except 400px to the left */
 #map {
     position: absolute;
     top: 0;
@@ -462,39 +461,16 @@ figure p {
     #curtain-2 {
         display: none;
     }
-    /* make control panel above the map */
-    #control-panel {
-        position: absolute;
-        padding: 0;
-        margin-left: 5px;
-        margin-right: 5px;
-        margin-top: 5px;
-        margin-bottom: 2.5px;
-        top: 0;
-        left: 0;
-        width: calc(100% - 10px);
-        height: 100px;
-        background-color: #ede6da;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-        box-sizing: border-box;
-    }
     #map {
         position: absolute;
-        top: 100px;
+        top: 107px;
+        margin: 0;
         left: 0;
-        margin-left: 5px;
-        margin-right: 5px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        width: calc(100% - 10px);
-        height: calc(100% - 120px);
-        border-radius: 10px;
+        width: 100%;
+        height: calc(100% - 107px);
         overflow: hidden;
-        background-color: #ede6da;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+        border-radius: 0px;
+        box-shadow: none;
     }
     .count-number {
         text-align: center;
@@ -505,6 +481,252 @@ figure p {
         /* text outline black */
         /* -webkit-text-stroke: 2px #5b4b1d; */
         /* background-color: #3b3b3b; */
+    }
+    #intro {
+        height: 100vh;
+        /* flex: 1; */
+        background-color: #040406;
+        color: #f5c53b;
+        padding: 1rem;
+        /* margin-bottom: 2rem; */
+        /* center contents vertically */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-image: url("../chicken-headshot-transparent80.png");
+        background-size:contain;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        align-items: center;
+        /* opacity: 0.8; */
+    }
+    #intro h1 {
+        font-size: 2rem;
+        font-family: PPEiko-heavy;
+        text-align: center;
+        padding: 0rem;
+        margin: 0rem;
+    }
+    #intro p {
+        font-size: 3rem;
+        font-family: PPEiko-medium;
+        text-align: center;
+        padding: 0rem;
+        margin: 0rem;
+        /* max-width: 800px; */
+        margin: 0 auto;
+    }
+    .emoji {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        /* left: 50%; */
+        -moz-transform: translate(-0%, -50%);
+        -webkit-transform: translate(-0%, -50%);
+        transform: translate(-0%, -50%);
+        font-weight: 900;
+        color: #00ff4c;
+    }
+    .highlight {
+        background-color: #f5c53b;
+    }
+    figure {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        background-color: #e0dcd6;
+        z-index: 0;
+        background-image: url("");
+        background-size:contain; /* Image will be displayed at its original size */
+        background-repeat: no-repeat; 
+        background-position: center center;
+        justify-content: center;
+    }
+    
+    figure p {
+        text-align: center;
+        padding: 1rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -moz-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        font-size: 1rem;
+        font-weight: 900;
+        color: #000000;
+    }
+    
+    .button-1 {
+        background-color: #f5c53b;
+        border-radius: 8px;
+        border-style: none;
+        box-sizing: border-box;
+        color: #000000d0;
+        cursor: pointer;
+        display: inline-block;
+        font-family: PPEiko-black-italic, sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        height: 40px;
+        line-height: 20px;
+        list-style: none;
+        margin: 20px;
+        outline: none;
+        padding: 10px 16px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        transition: color 100ms;
+        vertical-align: baseline;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+    }
+    .button-2 {
+        position: fixed;
+        z-index: 10;
+        right: 0;
+        background-color: #f5c53b;
+        border-radius: 8px;
+        border-style: none;
+        box-sizing: border-box;
+        border: 3px solid #000000a9;
+        color: #000000d0;
+        cursor: pointer;
+        font-family: PPEiko-black-italic, sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        height: 40px;
+        line-height: 10px; /* Set line-height equal to the height of the button */
+        list-style: none;
+        margin: 20px;
+        outline: none;
+        padding: 10px 16px;
+        text-align: center;
+        text-decoration: none;
+        transition: color 100ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+    }
+    
+    .button-2:hover,
+    .button-2:focus {
+        /* background-color: #f5c73bbb; */
+        cursor: pointer;
+        transform: translateY(-5px); /* Move the button up on hover */
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    .button-2:active {
+        background-color: #f5c53b;
+        box-shadow: none;
+    }
+    
+    .button-1:hover,
+    .button-1:focus {
+        /* background-color: #f5c73bbb; */
+        cursor: pointer;
+        transform: translateY(-5px); /* Move the button up on hover */
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    .button-1:active {
+        background-color: #f5c53b;
+        box-shadow: none;
+    }
+    .card {
+        background-color: #ede6da;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4); */
+    }
+    .control-panel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 107px;
+        margin: 0;
+        border-radius: 0;
+    }
+    .counts {
+        display: flex;
+        flex-direction: column; /* Stacks count and label vertically */
+        align-items: center; /* Centers them horizontally */
+        flex: 1;
+    }
+    .counts-wrapper {
+        justify-content: space-around;
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+    .count-number {
+        text-align: center;
+        font-family: PPEiko-heavy;
+        padding: 0rem;
+        font-size: 1.5rem;
+        color: #000000;
+    }
+    .count-label {
+        text-align: center;
+        font-family: PPEiko-light-italic;
+        padding: 0rem;
+        font-size: 1rem;
+        /* background-color: #3b3b3b; */
+    }
+    .vertical-line {
+        border-left: 2px solid #bab5ac;
+        height: 49px;
+        border-radius: 2px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .legend-label {
+        text-align: Left;
+        font-family: PPEiko-medium;
+        font-size: 0.8rem;
+        margin-left: 10px;
+    }
+    .legend-wrapper {
+        /* make everything in this side by side */
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+        /* justify-content: space-between; */
+    }
+    .legend {
+        margin-top: 4px;
+    }
+    #scroll-button {
+        border: none;
+        background-color: transparent;
+        padding: 1.5rem;
+        cursor: pointer;
+        align-items: center;
+        position: absolute;
+        bottom: 0px;
+    }
+    
+    #scroll-button:hover {
+        svg {
+            transition: transform 0.5s ease-in-out;
+            transform: translateY(-10px);
+        }
+    }
+    #scroll-text {
+        font-family: PPEiko-black-italic;
+        font-size: 1rem;
+        color: #f5c53b;
+        align-items: center;
+        position: absolute;
+        bottom: 0px;
     }
 }
 
